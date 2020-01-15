@@ -1,13 +1,15 @@
 import React from 'react';
 // import Stock from './components/stock';
-import Users from './components/users';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Back from './components/background';
+// import Users from './components/users';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      {/* <Stock />    */}
-      <Users />
+      <Back />
+      {/* <Users /> */}
     </div>
   );
 }
