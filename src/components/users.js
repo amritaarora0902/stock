@@ -8,7 +8,7 @@ class Users extends Component {
 
 
         this.state = {
-            check1: true,
+            check1: false,
             check2: false,
             check3: false
         }
