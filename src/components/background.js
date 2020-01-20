@@ -8,17 +8,16 @@ class Back extends Component {
 
     render() {
         return (
-            <div
-    style={{
+            <div style={{
         position: 'absolute', left: '50%', top: '40%',
         transform: 'translate(-50%, -50%)'
     }}>
-            <Card style={{ width: '20em', height: '20em'}}>
+            <Card  bg="light" border="light" style={{ width: '20em', height: '20em'}}>
                 <Card.Body>
-                <Card.Title>
+                <Card.Title className="text-center">
                     User Input
                 </Card.Title>
-                <Card.Text>
+                <Card.Text className="text-center">
                     <Users />
                 </Card.Text>
 

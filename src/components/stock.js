@@ -9,7 +9,8 @@ class Stock extends Component {
         super(props);
         this.state ={
             XValues: [],
-            YValues: []
+            YValues: [],
+            name: this.props.name
         }
     }
 
