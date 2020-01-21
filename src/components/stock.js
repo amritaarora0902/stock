@@ -10,7 +10,7 @@ class Stock extends Component {
         this.state ={
             XValues: [],
             YValues: [],
-            name: this.props.name
+            
         }
     }
 
@@ -21,6 +21,8 @@ class Stock extends Component {
 
     fetchStock() {
         const pointer = this;
+        const Api_Name=this.props.x;
+        console.log('hey',this.props.x);
         const API_KEY='3M3UW9BJTEPF28BK';
         let Api_Call = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=MSFT&outputsize=compact&apikey= $(API_KEY)';
         let stockXvalues = [];
