@@ -10,21 +10,32 @@ class Stock extends Component {
         this.state ={
             XValues: [],
             YValues: [],
+            myState: this.props.passer
             
         }
     }
 
-    componentDidMount() {
-        this.fetchStock();
-    }
+    // componentDidMount() {
+    //     this.fetchStock();
+    // }
+
+   componentWillReceiveProps(nextprops)
+   {
+       if(this.props.passer !== nextprops.passer)
+       {
+        this.setState({myState: 'hey' });
+           this.fetchStock(nextprops.passer)
+       }
+   }
 
 
     fetchStock() {
         const pointer = this;
-        const Api_Name=this.props.x;
-        console.log('hey',this.props.x);
+        const Api_Name=this.props.passer;
+        // console.log('passer in stock',this.props.passer);
         const API_KEY='3M3UW9BJTEPF28BK';
-        let Api_Call = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=MSFT&outputsize=compact&apikey= $(API_KEY)';
+        let Api_Call = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol='+Api_Name+'&outputsize=compact&apikey=' + API_KEY;
+        // console.log(Api_Call)
         let stockXvalues = [];
         let stockYvalues = [];
         fetch(Api_Call)
@@ -35,7 +46,7 @@ class Stock extends Component {
         )
         .then(
             function(data) {
-                console.log(data);
+                // console.log(data);
 
                 for (var key in data['Time Series (Daily)'])
                 {
@@ -57,6 +68,9 @@ class Stock extends Component {
 
 
     render() {
+        
+
+     
     return (
         <div>
         {/* <h1>Stock Market</h1> */}
@@ -75,6 +89,7 @@ class Stock extends Component {
         ]}
         layout={ {width: 620, height: 440, title:''} }
       />
+    <h1>{this.props.passer}</h1>
         </div>
     );
     }
