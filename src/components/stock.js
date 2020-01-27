@@ -15,24 +15,17 @@ class Stock extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     this.fetchStock();
-    // }
 
-   componentWillReceiveProps(nextprops)
-   {
-       if(this.props.passer !== nextprops.passer)
-       {
-        this.setState({myState: 'hey' });
-           this.fetchStock(nextprops.passer)
-       }
-   }
-
-
+componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.passer !== prevProps.passer) {
+      this.fetchStock(this.props.passer);
+    }
+  }
     fetchStock() {
         const pointer = this;
         const Api_Name=this.props.passer;
-        // console.log('passer in stock',this.props.passer);
+        console.log('passer in stock',this.props.passer);
         const API_KEY='3M3UW9BJTEPF28BK';
         let Api_Call = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol='+Api_Name+'&outputsize=compact&apikey=' + API_KEY;
         // console.log(Api_Call)
@@ -46,7 +39,7 @@ class Stock extends Component {
         )
         .then(
             function(data) {
-                // console.log(data);
+                console.log(data);
 
                 for (var key in data['Time Series (Daily)'])
                 {
@@ -87,9 +80,9 @@ class Stock extends Component {
           }
           
         ]}
-        layout={ {width: 620, height: 440, title:''} }
+        layout={ {width: 650, height: 500, title:''} }
       />
-    <h1>{this.props.passer}</h1>
+    
         </div>
     );
     }

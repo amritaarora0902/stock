@@ -59,10 +59,10 @@ class Users extends Component {
                 checked={this.state.check2} onChange={this.onCheckChange2.bind(this)} />Amazon <br />
                 <input type="checkbox" name="check3" 
                 checked={this.state.check3} onChange={this.onCheckChange3.bind(this)} />Microsoft <br />
-                <h1>{this.state.passer}</h1>
-                <Stock passer={this.state.passer} />
+                
                 
             </div>
+            <Stock passer={this.state.passer} />
             
             </div>
         )
